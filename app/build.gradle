@@ -1,0 +1,47 @@
+apply plugin: 'com.android.application'
+
+android {
+    //debug使用正式版证书
+    signingConfigs {
+        config {
+            keyAlias '证书别名'
+            keyPassword '密码'
+            storeFile file('证书目录')
+            storePassword '证书库密码'
+        }
+    }
+    compileSdkVersion 23
+    buildToolsVersion "23.0.2"
+    defaultConfig {
+        applicationId "apitest.nht.com.multiapi"
+        minSdkVersion 15
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
+        }
+        debug {
+            signingConfig signingConfigs.config
+        }
+    }
+    productFlavors {
+        myrelease {
+            applicationId 'myrelease.apitest.nht.com.multiapi'
+            versionName '1.0-release'
+        }
+        mydebug {
+            applicationId 'mydebug.apitest.nht.com.multiapi'
+            versionName '1.0-debug'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile 'com.android.support:appcompat-v7:23.1.1'
+}
