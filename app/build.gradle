@@ -1,13 +1,14 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.neenbedankt.android-apt'
 
 android {
     //debug使用正式版证书
     signingConfigs {
         config {
-            keyAlias '证书别名'
-            keyPassword '密码'
-            storeFile file('证书目录')
-            storePassword '证书库密码'
+            keyAlias '宁波理工'
+            keyPassword ':n28h37t37NHT'
+            storeFile file('D:/Document/Android/graduation/nit')
+            storePassword ':n28h37t37NHT'
         }
     }
     compileSdkVersion 23
@@ -44,4 +45,6 @@ android {
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.android.support:appcompat-v7:23.1.1'
+    compile 'com.jakewharton:butterknife:8.2.1'
+    apt 'com.jakewharton:butterknife-compiler:8.2.1'
 }

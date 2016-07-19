@@ -4,16 +4,32 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+
 public class MainActivity extends AppCompatActivity {
+
+    @BindView(R.id.tv_http)
+    TextView tvHttp;
+    @BindView(R.id.bt_http)
+    Button btHttp;
+    @BindView(R.id.iv_http)
+    ImageView ivHttp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        TextView tv = (TextView) findViewById(R.id.tv_http);
-        tv.setText(GlobalVar.dateIp);
+        ButterKnife.bind(this);
+//        TextView tv = (TextView) findViewById(R.id.tv_http);
+//        tv.setText(GlobalVar.dateIp);
+        tvHttp.setText(GlobalVar.dateIp);
     }
 
     @Override
@@ -36,5 +52,18 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @OnClick({R.id.tv_http, R.id.bt_http, R.id.iv_http})
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.tv_http:
+                tvHttp.setText("123213");
+                break;
+            case R.id.bt_http:
+                break;
+            case R.id.iv_http:
+                break;
+        }
     }
 }
